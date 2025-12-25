@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt | Jan Kluth</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html" class="logo-text">
+                    Jan <span>Kluth</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <a href="leistungen.html">Leistungen</a>
+                <a href="projekte.html">Projekte</a>
+                <a href="ueber-mich.html">Über mich</a>
+                <a href="kontakt.html" class="btn-primary">Kontakt</a>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="mobile-nav">
+            <a href="leistungen.html">Leistungen</a>
+            <a href="projekte.html">Projekte</a>
+            <a href="ueber-mich.html">Über mich</a>
+            <a href="kontakt.html" class="btn-primary">Kontakt</a>
+        </div>
+    </header>
+
+    <section class="hero" style="padding: 6rem 0; text-align: center;">
+        <div class="container">
+            <h1>Kontakt</h1>
+            <p class="subheadline">Ich freue mich auf Ihre Nachricht</p>
+        </div>
+    </section>
+
+    <section id="kontakt" class="contact" style="padding-top: 2rem;">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-details">
+                    <h3>Kontakt aufnehmen</h3>
+                    <h2 style="margin-bottom: 2rem;">Lassen Sie uns Ihr Projekt starten.</h2>
+                    <p style="margin-bottom: 2rem;">Ich freue mich darauf, mehr über Ihre Idee zu erfahren. Das
+                        Erstgespräch ist immer kostenlos und unverbindlich.</p>
+
+                    <p class="contact-link">
+                        <span style="color: var(--primary-color); margin-right: 10px;">📞</span>
+                        <a href="tel:+491774112013">+49 177 4112013</a>
+                    </p>
+                    <p class="contact-link">
+                        <span style="color: var(--primary-color); margin-right: 10px;">✉️</span>
+                        <a href="mailto:kontakt@jan-kluth.de">kontakt@jan-kluth.de</a>
+                    </p>
+                    <p style="color: #64748b; font-size: 0.9rem; margin-top: 2rem;">
+                        Erreichbar: Mo–Fr, 9–18 Uhr<br>
+                        Antwort innerhalb von 24h.
+                    </p>
+                </div>
+
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Ihr Name</label>
+                            <input type="text" id="name" name="name" placeholder="z.B. Max Mustermann" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Ihre E-Mail-Adresse</label>
+                            <input type="email" id="email" name="email" placeholder="name@firma.de" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="goal">Worum geht es?</label>
+                            <select id="goal" name="goal">
+                                <option value="" disabled selected>Bitte wählen...</option>
+                                <option>Neue Website erstellen</option>
+                                <option>Web-App Entwicklung</option>
+                                <option>Texterstellung / Copywriting</option>
+                                <option>Anderes Anliegen</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Ihre Nachricht</label>
+                            <textarea id="message" name="message" rows="4"
+                                placeholder="Erzählen Sie mir kurz von Ihrem Vorhaben..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Kostenloses Angebot anfordern</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Jan Kluth. <a href="impressum.html">Impressum</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
