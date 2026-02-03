@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenith | Master Your Workflow</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #4f46e5;
+            --bg: #ffffff;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --bg-alt: #f3f4f6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, sans-serif;
+        }
+
+        body {
+            color: var(--text-main);
+            line-height: 1.5;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 6rem 1rem 4rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1.5px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .features {
+            padding: 4rem 2rem;
+            background: var(--bg-alt);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            background: #dbeafe;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .pricing {
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .toggle-container {
+            margin: 2rem 0;
+            display: inline-flex;
+            background: var(--bg-alt);
+            padding: 4px;
+            border-radius: 99px;
+        }
+
+        .toggle-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 99px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            transition: all 0.3s;
+            color: var(--text-muted);
+        }
+
+        .toggle-btn.active {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .price-card {
+            padding: 3rem 2rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            position: relative;
+        }
+
+        .price-card.featured {
+            border-color: var(--primary);
+            background: #eff6ff;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .period {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .plan-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .faq {
+            padding: 5rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 1rem;
+        }
+
+        .faq-question {
+            padding: 1.5rem 0;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text-muted);
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 150px;
+            padding-bottom: 1.5rem;
+        }
+
+        .arrow {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .arrow {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Zenith.</div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#faq">FAQ</a>
+        </div>
+        <a href="#" class="btn" style="margin-left: 2rem;">Get Started</a>
+    </nav>
+
+    <section class="hero">
+        <h1>Organize your life with <span style="color: var(--primary);">Zenith</span></h1>
+        <p>The ultimate task management platform designed for high-performing teams and individuals. Focus on what
+            matters.</p>
+        <img src="dashboard.png" alt="Zenith Dashboard"
+            style="max-width: 100%; border-radius: 12px; margin: 2rem 0; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+            <a href="#" class="btn">Start Free Trial</a>
+            <a href="#" class="btn" style="background: white; color: var(--text-main); border: 1px solid #e5e7eb;">View
+                Demo</a>
+        </div>
+    </section>
+
+    <!-- Logo Strip -->
+    <div
+        style="padding: 2rem; border-top: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb; max-width: 1000px; margin: 0 auto 4rem;">
+        <p
+            style="text-align:center; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 1px;">
+            Trusted by innovative teams at</p>
+        <div
+            style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 2rem; opacity: 0.6; filter: grayscale(100%); font-weight: 700; font-size: 1.2rem;">
+            <span>ACME Corp</span>
+            <span>Globex</span>
+            <span>Soylent</span>
+            <span>Umbrella Inc</span>
+            <span>Stark Ind</span>
+        </div>
+    </div>
+
+    <!-- Workflow Visual -->
+    <section style="padding: 4rem 1rem; text-align: center;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 3rem;">Automate your chaos</h2>
+        <div
+            style="max-width: 800px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+            <div
+                style="background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📥</div>
+                <strong>Input</strong>
+            </div>
+            <div style="font-size: 2rem; color: var(--primary);">➔</div>
+            <div
+                style="background: var(--primary); color: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚙️</div>
+                <strong>Zenith AI</strong>
+            </div>
+            <div style="font-size: 2rem; color: var(--primary);">➔</div>
+            <div
+                style="background: white; padding: 1.5rem; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">✅</div>
+                <strong>Result</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="grid">
+                <div class="feature-card">
+                    <div class="icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p style="color: var(--text-muted); margin-top: 0.5rem;">Built on the latest tech stack for instant
+                        load times and real-time syncing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🔒</div>
+                    <h3>Bank-Grade Security</h3>
+                    <p style="color: var(--text-muted); margin-top: 0.5rem;">Your data is encrypted at rest and in
+                        transit. We take privacy seriously.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🤖</div>
+                    <h3>AI Automation</h3>
+                    <p style="color: var(--text-muted); margin-top: 0.5rem;">Let Zenith handle the busy work.
+                        Auto-schedule tasks based on priority.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <h2>Simple Pricing</h2>
+        <div class="toggle-container">
+            <button class="toggle-btn active" onclick="setPeriod('monthly')">Monthly</button>
+            <button class="toggle-btn" onclick="setPeriod('yearly')">Yearly (-20%)</button>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="price-card">
+                <div class="plan-name">Starter</div>
+                <div class="price" id="price-starter">$0</div>
+                <span class="period">/mo</span>
+                <ul style="list-style: none; margin-top: 2rem; text-align: left; line-height: 2;">
+                    <li>✓ 5 Projects</li>
+                    <li>✓ Basic Analytics</li>
+                    <li>✓ Community Support</li>
+                </ul>
+                <a href="#" class="btn"
+                    style="width: 100%; margin-top: 2rem; background: var(--bg-alt); color: var(--text-main);">Join
+                    Free</a>
+            </div>
+            <div class="price-card featured">
+                <div class="plan-name">Pro</div>
+                <div class="price" id="price-pro">$29</div>
+                <span class="period">/mo</span>
+                <ul style="list-style: none; margin-top: 2rem; text-align: left; line-height: 2;">
+                    <li>✓ Unlimited Projects</li>
+                    <li>✓ Advanced AI Features</li>
+                    <li>✓ Priority Support</li>
+                </ul>
+                <a href="#" class="btn" style="width: 100%; margin-top: 2rem;">Get Pro</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question">Is there a free trial? <span class="arrow">▼</span></div>
+            <div class="faq-answer">Yes! We offer a 14-day free trial on the Pro plan. No credit card required.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Can I cancel anytime? <span class="arrow">▼</span></div>
+            <div class="faq-answer">Absolutely. You can cancel your subscription at any time from your account settings.
+            </div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Do you offer team plans? <span class="arrow">▼</span></div>
+            <div class="faq-answer">Yes, contact our sales team for custom enterprise pricing for teams larger than 50.
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Pricing Toggle Logic
+        function setPeriod(period) {
+            const btns = document.querySelectorAll('.toggle-btn');
+            btns.forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const priceStarter = document.getElementById('price-starter');
+            const pricePro = document.getElementById('price-pro');
+            const periods = document.querySelectorAll('.period');
+
+            if (period === 'monthly') {
+                priceStarter.textContent = '$0';
+                pricePro.textContent = '$29';
+                periods.forEach(p => p.textContent = '/mo');
+            } else {
+                priceStarter.textContent = '$0';
+                pricePro.textContent = '$279';
+                periods.forEach(p => p.textContent = '/yr');
+            }
+        }
+
+        // FAQ Interact
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('open');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
